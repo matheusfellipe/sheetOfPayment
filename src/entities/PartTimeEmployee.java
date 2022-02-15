@@ -1,4 +1,4 @@
-package sheetOfPayment;
+package entities;
 
 public class PartTimeEmployee extends Employee {
 
