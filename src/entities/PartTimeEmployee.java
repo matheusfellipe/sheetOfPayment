@@ -7,9 +7,10 @@ public class PartTimeEmployee extends Employee {
 	public PartTimeEmployee() {
 		super();
 	}
-	
-	public PartTimeEmployee(String name, Integer hours, Double valuePerHour, Double additionalCharge) {
-		super(name, hours, valuePerHour);
+
+	public PartTimeEmployee(String name, Integer hours, Double valuePerHour, Double additionalCharge,
+			Department department) {
+		super(name, hours, valuePerHour, department);
 		this.additionalCharge = additionalCharge;
 	}
 
@@ -20,7 +21,7 @@ public class PartTimeEmployee extends Employee {
 	public void setAdditionalCharge(Double additionalCharge) {
 		this.additionalCharge = additionalCharge;
 	}
-	
+
 	@Override
 	public double payment() {
 		return super.payment() + additionalCharge * 1.1;

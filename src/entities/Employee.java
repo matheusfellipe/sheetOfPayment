@@ -5,13 +5,24 @@ public class Employee {
 	private Integer hours;
 	private Double valuePerHour;
 
+	protected Department department;
+
 	public Employee() {
 	}
 
-	public Employee(String name, Integer hours, Double valuePerHour) {
+	public Employee(String name, Integer hours, Double valuePerHour, Department department) {
 		this.name = name;
 		this.hours = hours;
 		this.valuePerHour = valuePerHour;
+		this.department = department;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	public String getName() {

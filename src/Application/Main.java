@@ -22,9 +22,11 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
+		System.out.println("----------Outsourced Contractor----------");
 		System.out.print("Enter department's name: ");
 		String departmentName = sc.nextLine();
 
+		System.out.println("ADD Worker");
 		System.out.print("Name: ");
 		String workerName = sc.nextLine();
 
@@ -58,14 +60,20 @@ public class Main {
 		}
 
 		System.out.println();
+
 		System.out.print("Enter month and year to calculate income (MM/YYYY): ");
 		String monthAndYear = sc.next();
+
 		int month = Integer.parseInt(monthAndYear.substring(0, 2));
 		int year = Integer.parseInt(monthAndYear.substring(3));
+
 		System.out.println("Name: " + worker.getName());
+
 		System.out.println("Department: " + worker.getDepartment().getName());
+
 		System.out.println("Income for " + monthAndYear + ": " + String.format("%.2f", worker.income(year, month)));
 
+		System.out.println("----------Employee----------");
 		List<Employee> list = new ArrayList<>();
 
 		System.out.print("Enter the number of employees: ");
@@ -73,25 +81,38 @@ public class Main {
 
 		for (int i = 1; i <= j; i++) {
 			System.out.println("Employee #" + i + " data:");
-			System.out.print("Outsourced (y/n)? ");
+
+			System.out.print("Enter department's name: ");
+			sc.nextLine();
+			String departmentName2 = sc.nextLine();
+
+			System.out.print("Part time (y/n)? ");
 			char ch = sc.next().charAt(0);
+
 			System.out.print("Name: ");
 			sc.nextLine();
 			String name = sc.nextLine();
+
+			System.out.print("Level (JUNIOR/MID_LEVEL/SENIOR): ");
+			String workerLevel2 = sc.nextLine();
+
 			System.out.print("Hours: ");
 			int hours = sc.nextInt();
 			System.out.print("Value per hour: ");
 			double valuePerHour = sc.nextDouble();
+
 			if (ch == 'y') {
 				System.out.print("Additional charge: ");
 				double additionalCharge = sc.nextDouble();
-				list.add(new PartTimeEmployee(name, hours, valuePerHour, additionalCharge));
+				list.add(new PartTimeEmployee(name, hours, valuePerHour, additionalCharge,
+						new Department(departmentName)));
 			} else {
-				list.add(new Employee(name, hours, valuePerHour));
+				list.add(new Employee(name, hours, valuePerHour, new Department(departmentName2)));
 			}
 		}
 
 		System.out.println();
+
 		System.out.println("PAYMENTS:");
 		for (Employee emp : list) {
 			System.out.println(emp.getName() + " - $ " + String.format("%.2f", emp.payment()));
